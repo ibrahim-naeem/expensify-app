@@ -1,17 +1,38 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import AppRouter from './routers/AppRouter'
+import { Provider } from 'react-redux';
+import configureStore from './store/configureStore';
+import { addExpense } from './actions/expenses';
+import { setTextFilter, sortByAmount } from './actions/filters';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+import "react-dates/lib/css/_datepicker.css";
+
+
+
+const store = configureStore();
+
+const jsx = (
+    <Provider store={store}>
+        <AppRouter />
+    </Provider>
+)
+
+
+ReactDOM.render(jsx, document.getElementById("root"));
+
+
+
+
+
+const expensOne = store.dispatch(addExpense({ description: 'Car', amount: 12000,  createdAt: 3000 }))
+const expensTwo = store.dispatch(
+  addExpense({ description: "House", amount: 5000, createdAt: 5000 })
+);
+const expensThree = store.dispatch(
+  addExpense({ description: "Building", amount: 7000, createdAt: 7000 })
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+// store.dispatch(setTextFilter('house'))
+// store.dispatch(sortByAmount())

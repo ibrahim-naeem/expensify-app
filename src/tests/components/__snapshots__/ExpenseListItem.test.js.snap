@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render expenser list item expense 1`] = `
+<div>
+  <[object Object]
+    to="/edit/1"
+  >
+    <h3>
+      Description : 
+      Gym
+    </h3>
+  </[object Object]>
+  <p>
+    Amount : 
+    195
+     - CreatedAt : 
+    0
+  </p>
+</div>
+`;
